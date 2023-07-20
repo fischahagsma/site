@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Мой сайт</title>
+		<style>
+			#block{
+				width: 300px; /* задаём ширину блока с id block */
+				background: black;
+				margin: auto;
+				border: 5px groove gray;
+			}
+			#redBlock, #yellowBlock, #limeBlock{
+				width: 150px;
+				height: 150px;
+				margin: auto;
+				border-radius: 75px;
+				margin-bottom: 15px;
+				box-shadow: inset 0 0 20px black;
+				border: 3px solid silver;
+				background: gray;
+				margin-top: 15px;
+			}
+			#redBlock{
+				animation: stop 20s infinite;
+			}
+			#yellowBlock{
+				animation: wait 20s infinite;
+			}
+			#limeBlock{
+				animation: go 20s infinite;
+			}
+			@keyframes stop{
+				0%{background: red;}
+				19%{background: red;}
+				20%{background: gray;}
+				59%{background: gray;}
+				60%{background: red;}
+				100%{background: red;}
+			}
+			@keyframes wait{
+				19%{background: gray;}
+				20%{background: yellow;}
+				29%{background: yellow;}
+				30%{background: gray;}
+				49%{background: gray;}
+				50%{background: yellow;}
+				59%{background: yellow;}
+				60%{background: gray;}
+			}
+			@keyframes go{
+				29%{background: gray;}
+				30%{background: lime;}
+				49%{background: lime;}
+				50%{background: gray;}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="block">
+			<div id="redBlock"></div>
+			<div id="yellowBlock"></div>
+			<div id="limeBlock"></div>
+		</div>
+	</body>
+</html>
