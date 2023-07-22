@@ -1,7 +1,7 @@
 <?php
     class Blog{
         static function getArticles(){
-            $mysqli = new mysqli('localhost', 'root', '', 'blog0404');
+            global $mysqli;
             $result = $mysqli->query("SELECT * FROM `articles`");
             $articles = [];
             $i = 0;
@@ -16,10 +16,26 @@
         }
 
         static function getArticleById($id){
-            $mysqli = new mysqli('localhost', 'root', '', 'blog0404');
+            global $mysqli;
             $result = $mysqli->query("SELECT * FROM `articles` WHERE id = '$id'");
             $row = $result->fetch_assoc();
             return json_encode($row);
+        }
+
+        static function editArticleById(){
+            $title = $_POST['title'];
+            $article = $_POST['article'];
+            $author = $_POST['author'];
+            $id = $_POST['id'];
+            global $mysqli;
+            $mysqli->query("UPDATE `articles` SET `title`='$title',`article`='$article',`author`='$author' WHERE id='$id'");
+            header("Location: /article/".$id);
+        }
+
+        static function deleteArticle($id){
+            global $mysqli;
+            $mysqli->query("DELETE FROM `articles` WHERE id='$id'");
+            header("Location: /blog");
         }
 
         static function test(){
